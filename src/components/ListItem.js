@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {
-  Platform,
-  UIManager,
+  //Platform,
+  //UIManager,
   Text,
   TouchableWithoutFeedback,
   View,
@@ -12,11 +12,11 @@ import * as actions from '../actions';
 
 class ListItem extends Component {
   componentWillUpdate() {
-    if (Platform.OS === 'android') {
-      UIManager.setLayoutAnimationEnabledExperimental
-      &&
-      UIManager.setLayoutAnimationEnabledExperimental(true);
-    }
+    // if (Platform.OS === 'android') {
+    //   UIManager.setLayoutAnimationEnabledExperimental
+    //   &&
+    //   UIManager.setLayoutAnimationEnabledExperimental(true);
+    // }
     LayoutAnimation.spring();
   }
   showDesc() {

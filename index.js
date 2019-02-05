@@ -1,4 +1,4 @@
-import { AppRegistry, View, BackHandler, Platform, Alert } from 'react-native';
+import { AppRegistry, View, BackHandler, Platform } from 'react-native';
 import React, { Component } from 'react';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
@@ -29,18 +29,6 @@ class App extends Component {
     BackHandler.removeEventListener('hardwareBackPress', this.handleBackButton);
   }
   handleBackButton() {
-    Alert.alert(
-        'Exit App',
-        'Exiting the application?', [{
-            text: 'Cancel',
-            onPress: () => console.log('Cancelled')
-        }, {
-            text: 'OK',
-            onPress: () => BackHandler.exitApp()
-        }], {
-            cancelable: false
-        }
-     );
      return true;
    }
   render() {
