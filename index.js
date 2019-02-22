@@ -10,8 +10,8 @@ import LibraryList from './src/components/LibraryList';
 class App extends Component {
   componentDidMount() {
     this.requestPermissions = this.requestPermissions.bind(this);
-    this.requestPermissions();
     if (Platform.OS === 'android') {
+      this.setState({ count: 0 }, () => this.requestPermissions());
       BackHandler.addEventListener('hardwareBackPress', this.handleBackButton);
     }
     PushNotification.configure({
@@ -41,13 +41,26 @@ class App extends Component {
         PermissionsAndroid.PERMISSIONS.READ_EXTERNAL_STORAGE,
         PermissionsAndroid.PERMISSIONS.WRITE_EXTERNAL_STORAGE])
         .then(results => {
-          Object.entries(results).map(([key, values]) => {
-                 key.forEach((value) => {
-                   console.log(values, value);
-                   if (value !== 'granted') {
-                     Alert.alert('Error', `We need for permission ${key}`);
-                   }
-                 });
+          Object.entries(results).map(([key, value]) => {
+                 console.log(key, value);
+                 if (value === 'denied' && this.state.count === 0) {
+                   this.setState({ count: this.state.count + 1 },
+                   () => {
+                     Alert.alert('Error', 'We need these permissions for the app to work correctly',
+                      [
+                        { text: 'Deny Anyway',
+                          onPress: () => BackHandler.exitApp(),
+                          style: 'cancel' },
+                        { text: 'Okay, I\'ll Allow',
+                          onPress: () => {
+                                          this.setState({ count: 0 },
+                                          () => { this.requestPermissions(); });
+                                          }
+                        }
+                      ],
+                      { cancelable: false });
+                   });
+                 }
                  return true;
              });
         });
