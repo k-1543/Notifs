@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "134774829179",
+    "firebase_url": "https://reduxreal.firebaseio.com",
+    "project_id": "reduxreal",
+    "storage_bucket": "reduxreal.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:134774829179:android:fd5a69353cadd867",
+        "android_client_info": {
+          "package_name": "com.reduxreal"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "134774829179-hbqvgiq0siiqfidqa3dfq61t6hmlo4f1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBaiLYB9f4gdvxNGbmUdfZbvIoBGO8DzPc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

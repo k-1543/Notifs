@@ -7,6 +7,7 @@ import {
   View,
   LayoutAnimation } from 'react-native';
 import { connect } from 'react-redux';
+import PushNotification from 'react-native-push-notification';
 import { CardItem, Card } from './common';
 import * as actions from '../actions';
 
@@ -33,7 +34,19 @@ class ListItem extends Component {
     const { id, title } = this.props.library;
     return (
       <TouchableWithoutFeedback
-        onPress={() => this.props.selectLibrary(id)}
+        onPress={() => {
+            this.props.selectLibrary(id);
+            PushNotification.localNotification({
+              /* Android Only Properties */
+              id: '0',
+              /* iOS and Android properties */
+              title: `You have selected ${title}`, // (optional)
+              message: `${this.props.library.description}`, // (required)
+              playSound: false, // (optional) default: true
+              actions: '["Yes", "No"]', //(Android only)
+            });
+          }
+        }
       >
         <View>
           <CardItem>
